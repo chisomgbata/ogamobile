@@ -1,6 +1,6 @@
 import React from 'react';
-import {ScrollView, Text, View, Image, TouchableOpacity} from "react-native";
-import {MaterialIcons, FontAwesome} from "@expo/vector-icons";
+import {ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {FontAwesome6} from "@expo/vector-icons";
 
 // Dummy data for posts
 const dummyPosts = [
@@ -50,49 +50,25 @@ const dummyPosts = [
     }
 ];
 
-const PostCard = ({post}: {post: typeof dummyPosts[0]}) => (
+const PostCard = ({post}: { post: typeof dummyPosts[0] }) => (
     <View className="bg-white mx-4 mb-4 rounded-xl p-4 shadow-sm border border-gray-100">
-        <View className="flex-row items-start mb-3">
-            <View className="w-12 h-12 rounded-full bg-gray-200 mr-3" />
+        <View className="flex-row items-center mb-3">
+            <View className="w-12 h-12 rounded-full bg-gray-200 mr-3"/>
             <View className="flex-1">
-                <View className="flex-row items-center">
-                    <Text className="font-semibold text-gray-900 mr-1">{post.username}</Text>
-                    <Text className="text-gray-500 text-sm mr-2">{post.handle}</Text>
+                <View className="flex-row items-center justify-between">
+                    <View>
+                        <Text className="font-semibold text-gray-900 mr-1">{post.username}</Text>
+                        <Text className="text-gray-500 text-sm mr-2">{post.handle}</Text>
+                    </View>
                     <Text className="text-gray-500 text-sm">·</Text>
                     <Text className="text-gray-500 text-sm ml-2">{post.time}</Text>
                 </View>
             </View>
         </View>
-        
-        <Text className="text-gray-900 leading-5 mb-4">{post.content}</Text>
-        
-        <View className="flex-row justify-between pt-2 border-t border-gray-100">
-            <TouchableOpacity className="flex-row items-center">
-                <FontAwesome name="comment-o" size={16} color="#6B7280" />
-                <Text className="ml-2 text-gray-500 text-sm">{post.comments}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="flex-row items-center">
-                <FontAwesome name="retweet" size={16} color="#6B7280" />
-                <Text className="ml-2 text-gray-500 text-sm">{post.retweets}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="flex-row items-center">
-                <FontAwesome name="heart-o" size={16} color="#6B7280" />
-                <Text className="ml-2 text-gray-500 text-sm">{post.likes}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-                <FontAwesome name="share" size={16} color="#6B7280" />
-            </TouchableOpacity>
-        </View>
-    </View>
-);
 
-const QuickActionBox = ({icon, title, color}: {icon: string, title: string, color: string}) => (
-    <TouchableOpacity className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 items-center justify-center" style={{backgroundColor: `${color}10`}}>
-        <View className="w-12 h-12 rounded-full items-center justify-center mb-2" style={{backgroundColor: color}}>
-            <MaterialIcons name={icon as any} size={24} color="white" />
-        </View>
-        <Text className="text-gray-700 font-medium text-sm text-center">{title}</Text>
-    </TouchableOpacity>
+        <Text className="text-gray-900 leading-5 mb-4">{post.content}</Text>
+
+    </View>
 );
 
 export default function PostsPage() {
@@ -100,45 +76,32 @@ export default function PostsPage() {
         <View className="flex-1 bg-gray-50">
             {/* Header */}
             <View className="bg-white pt-12 pb-4 px-4 border-b border-gray-100">
-                <View className="flex-row items-center justify-between">
+                <View className="flex-row items-center justify-between p-2">
                     <Text className="text-2xl font-bold text-gray-900">Posts</Text>
-                    <TouchableOpacity className="w-10 h-10 rounded-full items-center justify-center" style={{backgroundColor: '#F86900'}}>
-                        <MaterialIcons name="add" size={24} color="white" />
-                    </TouchableOpacity>
                 </View>
             </View>
 
             <ScrollView showsVerticalScrollIndicator={false}>
-                {/* Quick Actions - 4 boxes */}
-                <View className="p-4">
-                    <Text className="text-lg font-semibold text-gray-900 mb-3">Quick Actions</Text>
-                    <View className="flex-row justify-between mb-6">
-                        <View className="w-[22%]">
-                            <QuickActionBox icon="create" title="Create Post" color="#F86900" />
-                        </View>
-                        <View className="w-[22%]">
-                            <QuickActionBox icon="photo" title="Photo" color="#10B981" />
-                        </View>
-                        <View className="w-[22%]">
-                            <QuickActionBox icon="videocam" title="Video" color="#3B82F6" />
-                        </View>
-                        <View className="w-[22%]">
-                            <QuickActionBox icon="poll" title="Poll" color="#8B5CF6" />
-                        </View>
-                    </View>
-                </View>
 
                 {/* Posts Feed */}
-                <View className="pb-20">
+                <View className="pb-20 pt-5">
                     <View className="px-4 mb-4">
                         <Text className="text-lg font-semibold text-gray-900">Recent Posts</Text>
                     </View>
-                    
+
                     {dummyPosts.map((post) => (
-                        <PostCard key={post.id} post={post} />
+                        <PostCard key={post.id} post={post}/>
                     ))}
                 </View>
             </ScrollView>
+
+            {/*    Floating Action Button*/}
+            <TouchableOpacity
+                className="absolute bottom-6 right-6 w-16 h-16 bg-orange-500 rounded-lg items-center justify-center shadow-lg"
+                activeOpacity={0.7}>
+                <FontAwesome6 name="plus" size={28} color="white"/>
+            </TouchableOpacity>
+
         </View>
     );
 }
