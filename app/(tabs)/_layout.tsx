@@ -6,7 +6,7 @@ export default function TabLayout() {
         <Tabs screenOptions={{
             tabBarActiveTintColor: '#F86900',
             tabBarInactiveTintColor: 'gray',
-            animation: "shift",
+            animation: "fade",
             tabBarStyle: {
                 backgroundColor: 'white',
                 borderTopWidth: 0,
@@ -28,7 +28,7 @@ export default function TabLayout() {
                 name="chat"
                 options={{
                     title: "Chat",
-                    tabBarIcon: ({color}) => <MaterialIcons size={22} name="comment" color={color}/>,
+                    tabBarIcon: ({color}) => <MaterialIcons size={22} name="auto-awesome" color={color}/>,
                 }}
             />
             <Tabs.Screen

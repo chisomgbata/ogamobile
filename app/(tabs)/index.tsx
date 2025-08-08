@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import {ScrollView, Text, TouchableOpacity, View, Image} from "react-native";
-import {FontAwesome6, MaterialIcons, Ionicons} from "@expo/vector-icons";
+import React, {useState} from 'react';
+import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Ionicons, MaterialIcons} from "@expo/vector-icons";
 
 // Dummy data for posts
 const dummyPosts = [
@@ -60,8 +60,8 @@ const PostCard = ({post}: { post: typeof dummyPosts[0] }) => {
             <View className="flex-row">
                 {/* Avatar */}
                 <View className="mr-3">
-                    <Image 
-                        source={{uri: post.avatar}} 
+                    <Image
+                        source={{uri: post.avatar}}
                         className="w-12 h-12 rounded-full"
                         style={{backgroundColor: '#E5E7EB'}}
                     />
@@ -72,13 +72,13 @@ const PostCard = ({post}: { post: typeof dummyPosts[0] }) => {
                     {/* Header */}
                     <View className="flex-row items-center mb-1">
                         <Text className="font-bold text-gray-900 text-base mr-2">{post.username}</Text>
-                        <MaterialIcons name="verified" size={16} color="#1DA1F2" />
+                        <MaterialIcons name="verified" size={16} color="#1DA1F2"/>
                         <Text className="text-gray-500 text-sm ml-2">{post.handle}</Text>
                         <Text className="text-gray-500 text-sm mx-1">·</Text>
                         <Text className="text-gray-500 text-sm">{post.time}</Text>
-                        <View className="flex-1" />
+                        <View className="flex-1"/>
                         <TouchableOpacity className="p-1">
-                            <MaterialIcons name="more-horiz" size={20} color="#6B7280" />
+                            <MaterialIcons name="more-horiz" size={20} color="#6B7280"/>
                         </TouchableOpacity>
                     </View>
 
@@ -89,19 +89,19 @@ const PostCard = ({post}: { post: typeof dummyPosts[0] }) => {
                     <View className="flex-row items-center justify-between mt-2 max-w-80">
                         {/* Reply */}
                         <TouchableOpacity className="flex-row items-center p-2 -ml-2 rounded-full active:bg-blue-50">
-                            <Ionicons name="chatbubble-outline" size={18} color="#6B7280" />
+                            <Ionicons name="chatbubble-outline" size={18} color="#6B7280"/>
                             <Text className="text-gray-500 text-sm ml-2">{post.comments}</Text>
                         </TouchableOpacity>
 
                         {/* Retweet */}
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             className="flex-row items-center p-2 rounded-full active:bg-green-50"
                             onPress={() => setRetweeted(!retweeted)}
                         >
-                            <Ionicons 
-                                name="repeat" 
-                                size={18} 
-                                color={retweeted ? "#10B981" : "#6B7280"} 
+                            <Ionicons
+                                name="repeat"
+                                size={18}
+                                color={retweeted ? "#10B981" : "#6B7280"}
                             />
                             <Text className={`text-sm ml-2 ${retweeted ? 'text-green-600' : 'text-gray-500'}`}>
                                 {post.retweets + (retweeted ? 1 : 0)}
@@ -109,14 +109,14 @@ const PostCard = ({post}: { post: typeof dummyPosts[0] }) => {
                         </TouchableOpacity>
 
                         {/* Like */}
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             className="flex-row items-center p-2 rounded-full active:bg-red-50"
                             onPress={() => setLiked(!liked)}
                         >
-                            <Ionicons 
-                                name={liked ? "heart" : "heart-outline"} 
-                                size={18} 
-                                color={liked ? "#EF4444" : "#6B7280"} 
+                            <Ionicons
+                                name={liked ? "heart" : "heart-outline"}
+                                size={18}
+                                color={liked ? "#EF4444" : "#6B7280"}
                             />
                             <Text className={`text-sm ml-2 ${liked ? 'text-red-600' : 'text-gray-500'}`}>
                                 {post.likes + (liked ? 1 : 0)}
@@ -125,18 +125,18 @@ const PostCard = ({post}: { post: typeof dummyPosts[0] }) => {
 
                         {/* Share */}
                         <TouchableOpacity className="flex-row items-center p-2 rounded-full active:bg-blue-50">
-                            <Ionicons name="share-outline" size={18} color="#6B7280" />
+                            <Ionicons name="share-outline" size={18} color="#6B7280"/>
                         </TouchableOpacity>
 
                         {/* Bookmark */}
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             className="flex-row items-center p-2 -mr-2 rounded-full active:bg-blue-50"
                             onPress={() => setBookmarked(!bookmarked)}
                         >
-                            <Ionicons 
-                                name={bookmarked ? "bookmark" : "bookmark-outline"} 
-                                size={18} 
-                                color={bookmarked ? "#3B82F6" : "#6B7280"} 
+                            <Ionicons
+                                name={bookmarked ? "bookmark" : "bookmark-outline"}
+                                size={18}
+                                color={bookmarked ? "#3B82F6" : "#6B7280"}
                             />
                         </TouchableOpacity>
                     </View>
@@ -156,8 +156,9 @@ export default function PostsPage() {
                         <Text className="text-2xl font-bold text-gray-900">Home</Text>
                     </View>
                     <View className="flex-row items-center">
-                        <TouchableOpacity className="w-10 h-10 rounded-full bg-gray-100 items-center justify-center mr-3">
-                            <MaterialIcons name="settings" size={20} color="#6B7280" />
+                        <TouchableOpacity
+                            className="w-10 h-10 rounded-full bg-gray-100 items-center justify-center mr-3">
+                            <MaterialIcons name="settings" size={20} color="#6B7280"/>
                         </TouchableOpacity>
                     </View>
                 </View>
