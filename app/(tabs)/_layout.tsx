@@ -1,6 +1,6 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import {Tabs} from 'expo-router';
-import {EvilIcons} from "@expo/vector-icons";
+import {MaterialIcons} from "@expo/vector-icons";
 
 export default function TabLayout() {
     return (
@@ -11,14 +11,17 @@ export default function TabLayout() {
                 backgroundColor: 'white',
                 borderTopWidth: 0,
                 elevation: 0,
+                shadowOpacity: 0.1,
+                shadowOffset: { width: 0, height: -1 },
+                shadowRadius: 4,
             },
-
+            headerShown: false,
         }}>
             <Tabs.Screen
                 name="index"
                 options={{
-                    title: 'Home',
-                    tabBarIcon: ({color}) => <EvilIcons size={28} name="heart" color={color}/>,
+                    title: 'Posts',
+                    tabBarIcon: ({color}) => <MaterialIcons size={28} name="dashboard" color={color}/>,
                 }}
             />
             <Tabs.Screen
@@ -31,8 +34,8 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="notification"
                 options={{
-                    title: 'Settings',
-                    tabBarIcon: ({color}) => <FontAwesome size={28} name="cog" color={color}/>,
+                    title: 'Notifications',
+                    tabBarIcon: ({color}) => <FontAwesome size={28} name="bell" color={color}/>,
                 }}
             />
         </Tabs>
